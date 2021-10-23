@@ -40,8 +40,14 @@ namespace Vidly.Controllers
 
         public ActionResult NewMovie()
         {
+            var genres = _context.Genres.ToList();
 
-            return View("MovieForm");
+            var viewModel = new MovieFormViewModel
+            {
+                Genres = genres
+            };
+
+            return View("MovieForm", viewModel);
         }
       
     }
