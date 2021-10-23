@@ -248,6 +248,14 @@
     <Compile Include="Migrations\202110221520203_PopulateGenres2.Designer.cs">
       <DependentUpon>202110221520203_PopulateGenres2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110230752275_DeleteBirthdayFromCustomer.cs" />
+    <Compile Include="Migrations\202110230752275_DeleteBirthdayFromCustomer.Designer.cs">
+      <DependentUpon>202110230752275_DeleteBirthdayFromCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110230757246_AddBackBirthdayToCustomer.cs" />
+    <Compile Include="Migrations\202110230757246_AddBackBirthdayToCustomer.Designer.cs">
+      <DependentUpon>202110230757246_AddBackBirthdayToCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -395,6 +403,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110221520203_PopulateGenres2.resx">
       <DependentUpon>202110221520203_PopulateGenres2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110230752275_DeleteBirthdayFromCustomer.resx">
+      <DependentUpon>202110230752275_DeleteBirthdayFromCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110230757246_AddBackBirthdayToCustomer.resx">
+      <DependentUpon>202110230757246_AddBackBirthdayToCustomer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

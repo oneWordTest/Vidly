@@ -15,7 +15,7 @@ namespace Vidly.Models
         public string Name { get; set; }
 
         [Display(Name = "Date of Birth")]
-        public string Birthdate { get; set; }
+        public DateTime? Birthdate { get; set; }
 
         public bool isSubscribedToNewsletter { get; set; }
 
