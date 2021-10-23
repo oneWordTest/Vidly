@@ -23,8 +23,6 @@ namespace Vidly.Controllers
 
         public ViewResult Index()
         {
-            //var customers = GetCustomers();
-
             var customers = _context.Customers.Include(c => c.MembershipType).ToList();
 
             return View(customers);
@@ -97,16 +95,5 @@ namespace Vidly.Controllers
             return View("CustomerForm", viewModel);
         }
 
-
-        /*
-        private IEnumerable<Customer> GetCustomers()
-        {
-            return new List<Customer>
-            {
-                new Customer { Id = 1, Name = "John Smith" },
-                new Customer { Id = 2, Name = "Mary Williams" }
-            };
-        }
-        */
     }
 }
