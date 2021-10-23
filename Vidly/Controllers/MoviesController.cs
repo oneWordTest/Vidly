@@ -38,6 +38,11 @@ namespace Vidly.Controllers
 
         }
 
+        public ActionResult NewMovie()
+        {
+
+            return View("MovieForm");
+        }
       
     }
 }
