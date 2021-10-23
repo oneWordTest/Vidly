@@ -44,11 +44,31 @@ namespace Vidly.Controllers
         [HttpPost]
         public ActionResult Create(Customer customer)
         {
-            _context.Customers.Add(customer);
+            if (customer.Id == 0)
+                _context.Customers.Add(customer);
+            else
+            {
+                var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
+
+                //Only name will be updated, *Maggic Strings
+                //TryUpdateModel(customerInDb, "", new string[] { "Name" });
+
+                //For security reasones when using mapper it's better to
+                //create new customer class just for the update UpdateCustomerDto (Dto = Data transfer object)
+                //with the properties that needs/allowed to be updated
+                //Mapper.Map(customer, customerInDb);
+
+                customerInDb.Name = customer.Name;
+                customerInDb.Birthdate = customer.Birthdate;
+                customerInDb.MembershipTypeId = customer.MembershipTypeId;
+                customerInDb.isSubscribedToNewsletter = customer.isSubscribedToNewsletter;
+            }
+
             _context.SaveChanges();
 
             return RedirectToAction("Index", "Customers");
         }
+
 
         public ActionResult Details(int id)
         {
@@ -61,6 +81,24 @@ namespace Vidly.Controllers
             return View(customer);
         }
 
+        public ActionResult Edit(int id)
+        {
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+
+            if (customer == null)
+                return HttpNotFound();
+
+            var viewModel = new NewCustomerViewModel
+            {
+                Customer = customer,
+                MembershipTypes = _context.MembershipTypes.ToList()
+            };
+
+            return View("NewCustomer", viewModel);
+        }
+
+
+        /*
         private IEnumerable<Customer> GetCustomers()
         {
             return new List<Customer>
@@ -69,5 +107,6 @@ namespace Vidly.Controllers
                 new Customer { Id = 2, Name = "Mary Williams" }
             };
         }
+        */
     }
 }
