@@ -49,6 +49,13 @@ namespace Vidly.Controllers
 
             return View("MovieForm", viewModel);
         }
+
+        public ActionResult Save(Movie movie)
+        {
+            _context.Movies.Add(movie);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Movies");
+        }
       
     }
 }
