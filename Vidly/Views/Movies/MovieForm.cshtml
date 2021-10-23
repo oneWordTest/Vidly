@@ -1,10 +1,10 @@
 ﻿@model Vidly.ViewModels.MovieFormViewModel
 @{
-    ViewBag.Title = "MovieForm";
+    ViewBag.Title = Model.FormTitle;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>New Movie</h2>
+<h2>@Model.FormTitle</h2>
 
 @using (Html.BeginForm("Save", "Movies"))
 {
