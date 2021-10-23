@@ -38,11 +38,11 @@ namespace Vidly.Controllers
             {
                 MembershipTypes = membershipTypes
             };
-            return View(viewModel);
+            return View("CustomerForm",viewModel);
         }
 
         [HttpPost]
-        public ActionResult Create(Customer customer)
+        public ActionResult Save(Customer customer)
         {
             if (customer.Id == 0)
                 _context.Customers.Add(customer);
@@ -94,7 +94,7 @@ namespace Vidly.Controllers
                 MembershipTypes = _context.MembershipTypes.ToList()
             };
 
-            return View("NewCustomer", viewModel);
+            return View("CustomerForm", viewModel);
         }
 
 
