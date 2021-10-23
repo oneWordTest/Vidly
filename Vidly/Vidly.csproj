@@ -256,6 +256,10 @@
     <Compile Include="Migrations\202110230757246_AddBackBirthdayToCustomer.Designer.cs">
       <DependentUpon>202110230757246_AddBackBirthdayToCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110231027555_ChangedMovieProp.cs" />
+    <Compile Include="Migrations\202110231027555_ChangedMovieProp.Designer.cs">
+      <DependentUpon>202110231027555_ChangedMovieProp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -410,6 +414,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110230757246_AddBackBirthdayToCustomer.resx">
       <DependentUpon>202110230757246_AddBackBirthdayToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110231027555_ChangedMovieProp.resx">
+      <DependentUpon>202110231027555_ChangedMovieProp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
