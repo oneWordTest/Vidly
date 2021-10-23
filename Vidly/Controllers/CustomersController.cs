@@ -42,19 +42,22 @@ namespace Vidly.Controllers
         [HttpPost]
         public ActionResult Save(Customer customer)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new NewCustomerViewModel
+                {
+                    Customer = customer,
+                    MembershipTypes = _context.MembershipTypes.ToList()
+                };
+
+                return View("CustomerForm", viewModel);
+            }
+
             if (customer.Id == 0)
                 _context.Customers.Add(customer);
             else
             {
                 var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
-
-                //Only name will be updated, *Maggic Strings
-                //TryUpdateModel(customerInDb, "", new string[] { "Name" });
-
-                //For security reasones when using mapper it's better to
-                //create new customer class just for the update UpdateCustomerDto (Dto = Data transfer object)
-                //with the properties that needs/allowed to be updated
-                //Mapper.Map(customer, customerInDb);
 
                 customerInDb.Name = customer.Name;
                 customerInDb.Birthdate = customer.Birthdate;
