@@ -260,6 +260,14 @@
     <Compile Include="Migrations\202110231027555_ChangedMovieProp.Designer.cs">
       <DependentUpon>202110231027555_ChangedMovieProp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110240729374_DeleteReleaseDate.cs" />
+    <Compile Include="Migrations\202110240729374_DeleteReleaseDate.Designer.cs">
+      <DependentUpon>202110240729374_DeleteReleaseDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110240730086_RecreateReleasedate.cs" />
+    <Compile Include="Migrations\202110240730086_RecreateReleasedate.Designer.cs">
+      <DependentUpon>202110240730086_RecreateReleasedate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -418,6 +426,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110231027555_ChangedMovieProp.resx">
       <DependentUpon>202110231027555_ChangedMovieProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110240729374_DeleteReleaseDate.resx">
+      <DependentUpon>202110240729374_DeleteReleaseDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110240730086_RecreateReleasedate.resx">
+      <DependentUpon>202110240730086_RecreateReleasedate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
