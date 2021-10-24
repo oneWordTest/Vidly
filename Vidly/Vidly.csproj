@@ -184,11 +184,13 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\CustomersController.cs" />
+    <Compile Include="Controllers\Api\MoviesController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Dtos\CustomerDto.cs" />
+    <Compile Include="Dtos\MovieDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -283,6 +285,14 @@
     <Compile Include="Migrations\202110240730086_RecreateReleasedate.cs" />
     <Compile Include="Migrations\202110240730086_RecreateReleasedate.Designer.cs">
       <DependentUpon>202110240730086_RecreateReleasedate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110242031279_DeleteDateAdded.cs" />
+    <Compile Include="Migrations\202110242031279_DeleteDateAdded.Designer.cs">
+      <DependentUpon>202110242031279_DeleteDateAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110242032304_AddDateAdded.cs" />
+    <Compile Include="Migrations\202110242032304_AddDateAdded.Designer.cs">
+      <DependentUpon>202110242032304_AddDateAdded.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -448,6 +458,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110240730086_RecreateReleasedate.resx">
       <DependentUpon>202110240730086_RecreateReleasedate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110242031279_DeleteDateAdded.resx">
+      <DependentUpon>202110242031279_DeleteDateAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110242032304_AddDateAdded.resx">
+      <DependentUpon>202110242032304_AddDateAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

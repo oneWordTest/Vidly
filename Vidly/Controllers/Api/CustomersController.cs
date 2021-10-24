@@ -33,7 +33,7 @@ namespace Vidly.Controllers.Api
             if (customer == null)
                 return NotFound();
 
-            return Ok(Mapper.Map< Customer ,CustomerDto>(customer));
+            return Ok(Mapper.Map<Customer ,CustomerDto>(customer));
         }
 
         // POST /api/customers
