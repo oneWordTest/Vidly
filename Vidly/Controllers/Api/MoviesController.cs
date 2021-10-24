@@ -27,7 +27,7 @@ namespace Vidly.Controllers.Api
             return _context.Movies.ToList().Select(Mapper.Map<Movie, MovieDto>);
         }
 
-        // GET /api/movie/1
+        // GET /api/movies/1
         public IHttpActionResult GetMovie(int id)
         {
             var movie = _context.Movies.SingleOrDefault(m => m.Id == id);
