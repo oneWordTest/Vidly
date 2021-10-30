@@ -7,7 +7,6 @@ using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
-    [Authorize]
     public class CustomersController : Controller
     {
         private ApplicationDbContext _context;
@@ -24,9 +23,13 @@ namespace Vidly.Controllers
 
         public ViewResult Index()
         {
-            return View();
+            if (User.IsInRole(RoleName.CanManageMovies))
+                return View("List");
+
+            return View("ReadOnlyList");
         }
 
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult NewCustomer()
         {
             var membershipTypes = _context.MembershipTypes.ToList();
@@ -36,6 +39,7 @@ namespace Vidly.Controllers
                 Customer = new Customer(),
                 MembershipTypes = membershipTypes
             };
+
             return View("CustomerForm",viewModel);
         }
 
