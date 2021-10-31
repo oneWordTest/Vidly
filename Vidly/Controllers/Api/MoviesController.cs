@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Http;
 using Vidly.Dtos;
 using Vidly.Models;
+using System.Data.Entity;
 
 namespace Vidly.Controllers.Api
 {
@@ -22,11 +23,18 @@ namespace Vidly.Controllers.Api
 
 
         // GET /api/movies
-        public IHttpActionResult GetMovies()
+        public IEnumerable<MovieDto> GetMovies(string query = null)
         {
-            var movieDto = _context.Movies.ToList().Select(Mapper.Map<Movie, MovieDto>);
+            var moviesQuery = _context.Movies
+                .Include(m => m.Genre)
+                .Where(m => m.NumberAvailable > 0);
 
-            return Ok(movieDto);
+            if (!String.IsNullOrWhiteSpace(query))
+                moviesQuery = moviesQuery.Where(m => m.Name.Contains(query));
+
+            return moviesQuery
+                .ToList()
+                .Select(Mapper.Map<Movie, MovieDto>);
         }
 
         // GET /api/movies/1
@@ -60,7 +68,7 @@ namespace Vidly.Controllers.Api
 
         // PUT /api/movie/1
         [HttpPut]
-        public void UpdateCustomer(int id, MovieDto movieDto)
+        public void UpdateMovie(int id, MovieDto movieDto)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
