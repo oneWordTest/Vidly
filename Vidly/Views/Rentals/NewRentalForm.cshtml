@@ -27,7 +27,7 @@
         </div>
     </div>
 
-    <button class="btn btn-primary">Submit</button>
+    <button id="submitButton" class="btn btn-primary" value="">Submit</button>
 </form>
 @section scripts
 {
@@ -55,7 +55,7 @@
                 name: 'customers',
                 display: 'name',
                 source: customers
-            }).on("typeahead:select", function(e, customer) {
+            }).on("typeahead:select", function (e, customer) {
                 vm.customerId = customer.id;
             });
 
@@ -83,40 +83,78 @@
                 vm.movieIds.push(movie.id);
             });
 
+            $.validator.setDefaults({
+                ignore: "input.tt-hint",
+                errorClass: 'help-block',
+                highlight: function (element) {
+                    $(element)
+                        .closest('.form-group')
+                        .addClass('has-error');
+
+                },
+                unhighlight: function (element) {
+                    $(element)
+                        .closest('.form-group')
+                        .removeClass('has-error');
+                }
+            });
+
             $.validator.addMethod("validCustomer", function () {
-                return vm.customerId  && vm.customerId !== 0;
+                return vm.customerId && vm.customerId !== 0;
             }, "Please select a valid customer.");
 
             $.validator.addMethod("atLeastOneMovie", function () {
                 return vm.movieIds.length > 0;
+
             }, "Please select at least one movie.");
 
             var validator = $("#newRental").validate({
+                /*
+                roles: {
+                    customer: {
+                        required: true,
+                        validCustomer: true
+                    },
+                    movie: {
+                        atLeastOneMovie: true
+                    },
+                },
+                */
+                messages: {
+                    customer: {
+                        required: "Choose a Customer",
+                        validCustomer: "Please choose a valid Customer."
+                    },
+                    movie: {
+                        atLeastOneMovie: "Choose Movie",
+                    }
+                },
                 submitHandler: function () {
                     $.ajax({
                         url: "/api/newRentals",
                         method: "post",
                         data: vm
                     })
-                    .done(function () {
-                        toastr.success("Rentals successfully recorded.");
+                        .done(function () {
+                            toastr.success("Rentals successfully recorded.");
 
-                        //Clear Form and reset vm and validator
-                        $("#customer").typeahead("val", "");
-                        $("#movie").typeahead("val", "");
-                        $("#movies").empty();
+                            //Clear Form and reset vm and validator
+                            $("#customer").typeahead("val", "");
+                            $("#movie").typeahead("val", "");
+                            $("#movies").empty();
 
-                        vm = { movieIds: [] };
+                            vm = { movieIds: [] };
 
-                        validator.resetForm();
-                    })
-                    .fail(function () {
-                        toastr.error("Something unexpected happened.");
-                    });
+                            validator.resetForm();
+                        })
+                        .fail(function () {
+                            toastr.error("Something unexpected happened.");
+                        });
 
                     return false;
                 }
             });
+
         });
     </script>
 }
